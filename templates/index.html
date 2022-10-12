@@ -1,2 +1,95 @@
 {% extends 'base.html' %}
 
+{% block content %}
+      <!-- Navbar -->
+      <nav class="navbar px-7 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
+        <div class="personal flex flex-col ml-5 space-y-2">
+          <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
+          <span>Junior Fullstack Developer</span>
+          <div class="flex flex-row links space-x-3">
+            <span class="item github rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50"><i class="fa-brands fa-github"></i></span>
+            <span class="item github rounded-full bg-">linkedin icon</span>
+          </div>
+        </div>
+        <div class="contact">
+          telegram
+        </div>
+    </nav>
+
+    <!-- Welcome -->
+    <div class="container md flex flex-row mx-auto justify-between space-x-7 my-5">
+      <div class="main-section flex flex-col w-3/4 overflow-hidden">
+        <div class="about box">
+          <h2>About me</h2>
+          <p>technologies I use: python, django etc</p>
+          <p>frameworks: django, wordpress, etc</p>
+          <p>tools: pgadmin, git etc</p>
+          <p>IDE: pycharm, phpstorm etc</p>
+          <p>operating systems: linux, windows</p>
+        </div>
+        <div class="latest-projects box">
+          <h2>latest projects</h2>
+          <div>
+            project no. 1
+            <span>title</span>
+            <p>short description</p>
+            <iframe src="" frameborder="0">iframe if it's website</iframe>
+            <p>technology stack: langs, frameworks</p>
+          </div>
+        </div>
+        <div class="other-projects box">
+          <h2>other projects</h2>
+          <div class="side-project">
+            <a href="#">project name</a>
+            <p>short description</p>
+            <p>technology stack: </p>
+          </div>
+        </div>
+        <div class="experience box">
+          <h2>work experience</h2>
+          <div class="experience-position">
+            <p>fullstack developer - company name (start_year - now)</p>
+            <p>short desc what am i doing</p>
+            <p>enviroment/stack:</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sidebar w-1/4">
+        <div class="info box">
+          <p>adres</p>
+          <p>email</p>
+        </div>
+        <div class="skills box">
+          <h2 class="mb-2">skills</h2>
+          <div class="skill">
+            <div class="flex flex-row justify-between">
+              <span>language</span>
+              <span>level</span>
+            </div>
+            <div class="progress-bar bg-slate-700 w-full h-3">
+              <div class="progress-green w-9/12 bg-green-500 h-full"></div>
+            </div>
+          </div>
+        </div>
+        <div class="education box">
+          <h2>education</h2>
+          <p>degree</p>
+          <p>school name (yyyy-yyyy)</p>
+        </div>
+        <div class="languages box">
+          <h2>languages</h2>
+          <p>language: level [stars]</p>
+        </div>
+        <div class="currently-learn box">
+          <h2>currently learning</h2>
+          <ul>
+            <li>react</li>
+            <li>tailwind</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+{% endblock %}
