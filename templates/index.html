@@ -1,107 +1,112 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      <!-- Navbar -->
-      <nav class="navbar px-16 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
-        <div class="personal flex flex-col ml-5 space-y-2">
-          <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
-          <span>Junior Fullstack Developer</span>
-          <div class="flex flex-row links space-x-3">
-            {% for social in socials %}
-            <a title="{{ social.name }}" target="_blank" href="{{ social.url }}" class="item rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50">{{ social.icon|safe }}</a>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="contact">
-          telegram
-        </div>
-    </nav>
+<!-- Navbar -->
+<nav class="navbar px-16 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
+  <div class="personal flex flex-col ml-5 space-y-2">
+    <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
+    <span>Junior Fullstack Developer</span>
+    <div class="flex flex-row links space-x-3">
+      {% for social in socials %}
+      <a title="{{ social.name }}" target="_blank" href="{{ social.url }}" class="item rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50">{{ social.icon|safe }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="contact">
+    telegram
+  </div>
+</nav>
 
-    <!-- Welcome -->
-    <div class="container md flex flex-row mx-auto justify-between space-x-7 my-5">
-      <div class="main-section flex flex-col w-3/4 overflow-hidden">
-        <div class="about box">
-          <div class="divide-y-2 divide-gray-500 space-y-5">
-            <div class="about-section mb-2">
-              <p class="text-xl pb-1 font-bold tracking-wide font-sans">About me</p>
-              <p><span class="font-semibold">Technologies:</span> {% for technology in about.technologies %}{{ technology }}{% endfor %}</p>
-              <p><span class="font-semibold">Frameworks:</span> {% for framework in about.frameworks %}{{ framework }}{% endfor %}</p>
-              <p><span class="font-semibold">Tools:</span> {% for tool in about.tools %}{{ tool }}{% endfor %}</p>
-              <p><span class="font-semibold">IDEs:</span> {% for ide in about.ides %}{{ ide }}{% endfor %}</p>
-              <p><span class="font-semibold">Operating systems:</span> {% for operating_system in about.operating_systems %}{{ operating_system }}{% endfor %}</p>
-            </div>
-            <div class="exp-section pt-4">
-              <p class="text-xl pb-1 font-bold tracking-wide font-sans">Experience</p>
-              <p><span class="font-semibold">Total experience:</span> {{ about.total_exp_years }}</p>
-              <p><span class="font-semibold">Current employer:</span> <a {% if about.current_employer_website %}href="{{ about.current_employer_website }}"{% endif %}>{{ about.current_employer }}</a></p>
-            </div>
-          </div>
+<div class="container md flex flex-row mx-auto justify-between space-x-7 my-5">
+  <!-- Main -->
+  <div class="main-section flex flex-col w-3/4 overflow-hidden">
+    <div class="about box">
+      <div class="divide-y-2 divide-gray-500 space-y-5">
+        <div class="about-section mb-2">
+          <p class="text-xl pb-1 font-bold tracking-wide font-sans">About me</p>
+          <p><span class="font-semibold">Technologies:</span> {% for technology in about.technologies %}{{ technology }}{% endfor %}</p>
+          <p><span class="font-semibold">Frameworks:</span> {% for framework in about.frameworks %}{{ framework }}{% endfor %}</p>
+          <p><span class="font-semibold">Tools:</span> {% for tool in about.tools %}{{ tool }}{% endfor %}</p>
+          <p><span class="font-semibold">IDEs:</span> {% for ide in about.ides %}{{ ide }}{% endfor %}</p>
+          <p><span class="font-semibold">Operating systems:</span> {% for operating_system in about.operating_systems %}{{ operating_system }}{% endfor %}</p>
         </div>
-
-        <div class="latest-projects box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Latest projects</p>
-          <div>
-            project no. 1
-            <span>title</span>
-            <p>short description</p>
-            <iframe src="" frameborder="0">iframe if it's website</iframe>
-            <p>technology stack: langs, frameworks</p>
-          </div>
+        <div class="exp-section pt-4">
+          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Experience</p>
+          <p><span class="font-semibold">Total experience:</span> {{ about.total_exp_years }} {% if about.total_exp_years == 1 %}year{% else %}years{% endif %}</p>
+          <p><span class="font-semibold">Current employer:</span> <a {% if about.current_employer_website %}href="{{ about.current_employer_website }}"{% endif %}>{{ about.current_employer }}</a></p>
         </div>
-        <div class="other-projects box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Other projects</p>
-          <div class="side-project">
-            <a href="#">project name</a>
-            <p>short description</p>
-            <p>technology stack: </p>
-          </div>
-        </div>
-        <div class="experience box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>
-          <div class="experience-position">
-            <p>fullstack developer - company name (start_year - now)</p>
-            <p>short desc what am i doing</p>
-            <p>enviroment/stack:</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="sidebar w-1/4">
-        <div class="info box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal info</p>
-          <p>adres</p>
-          <p>email</p>
-        </div>
-        <div class="skills box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Skills</p>
-          <div class="skill">
-            <div class="flex flex-row justify-between">
-              <span>language</span>
-              <span>level</span>
-            </div>
-            <div class="progress-bar bg-slate-700 w-full h-3">
-              <div class="progress-green w-9/12 bg-green-500 h-full"></div>
-            </div>
-          </div>
-        </div>
-        <div class="education box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Education</p>
-          <p>degree</p>
-          <p>school name (yyyy-yyyy)</p>
-        </div>
-        <div class="languages box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Languages</p>
-          <p>language: level [stars]</p>
-        </div>
-        <div class="currently-learn box">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Currently studying</p>
-          <ul>
-            <li>react</li>
-            <li>tailwind</li>
-          </ul>
-        </div>
-
       </div>
     </div>
+
+    <div class="latest-projects box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Latest projects</p>
+      {% for project in latest_projects %}
+        <div>
+          <span>{{ project.name }}</span>
+          <p>{{ project.short_description }}</p>
+          {% if project.project_url %}
+          <iframe src="{{ project.project_url }}" frameborder="0" seamless></iframe>
+          {% endif %}
+          <p>technology stack: langs, frameworks</p>
+        </div>
+      {% endfor %}
+
+    </div>
+    <div class="other-projects box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Other projects</p>
+      <div class="side-project">
+        <a href="#">project name</a>
+        <p>short description</p>
+        <p>technology stack: </p>
+      </div>
+    </div>
+    <div class="experience box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>
+      <div class="experience-position">
+        <p>fullstack developer - company name (start_year - now)</p>
+        <p>short desc what am i doing</p>
+        <p>enviroment/stack:</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar w-1/4">
+    <div class="info box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal info</p>
+      <p>adres</p>
+      <p>email</p>
+    </div>
+    <div class="skills box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Skills</p>
+      <div class="skill">
+        <div class="flex flex-row justify-between">
+          <span>language</span>
+          <span>level</span>
+        </div>
+        <div class="progress-bar bg-slate-700 w-full h-3">
+          <div class="progress-green w-9/12 bg-green-500 h-full"></div>
+        </div>
+      </div>
+    </div>
+    <div class="education box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Education</p>
+      <p>degree</p>
+      <p>school name (yyyy-yyyy)</p>
+    </div>
+    <div class="languages box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Languages</p>
+      <p>language: level [stars]</p>
+    </div>
+    <div class="currently-learn box">
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Currently studying</p>
+      <ul>
+        <li>react</li>
+        <li>tailwind</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
