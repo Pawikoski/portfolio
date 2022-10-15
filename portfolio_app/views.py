@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from .models import About, CurrentlyStudying, LatestProject, Social, Language, Education
+from .models import About, CurrentlyStudying, LatestProject, Personal, Skill, Social, Language, Education
+import random
 
 
 # Create your views here.
@@ -18,7 +19,7 @@ def index(request):
             "current_employer_website": about_info.current_employer_website
         }
     languages = [{"name": lang.name, "full_stars": range(lang.level), "blank_stars": range(6 - lang.level)} for lang in Language.objects.all()]
-
+    
     context = {
         "about": about,
         "socials": Social.objects.all(),
@@ -26,7 +27,10 @@ def index(request):
         "languages": languages,
         "currently_studying": CurrentlyStudying.objects.all(),
         "education": Education.objects.all(),
+        "personal_data": Personal.objects.first(),
+        "skills": Skill.objects.all(),
     }
+    print(context)
 
     return render(request, "index.html", context=context)
 

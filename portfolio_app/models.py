@@ -118,3 +118,15 @@ class Education(models.Model):
     start_date = models.DateField()
     graduate_date = models.DateField(null=True, blank=True)
     still_learning = models.BooleanField(default=True)
+
+
+class Personal(models.Model):
+    location = models.CharField(max_length=100)
+    email = models.EmailField(max_length=70)
+    cv = models.FileField(upload_to="cv")
+    contact_form = models.URLField(null=True, blank=True)
+
+
+class Skill(models.Model):
+    language = models.CharField(max_length=35)
+    level = models.PositiveSmallIntegerField(verbose_name="Skill level (1-12)", validators=[MinValueValidator(1), MaxValueValidator(12)])
