@@ -20,13 +20,23 @@
     <div class="container md flex flex-row mx-auto justify-between space-x-7 my-5">
       <div class="main-section flex flex-col w-3/4 overflow-hidden">
         <div class="about box">
-          <h2>About me</h2>
-          <p>technologies I use: python, django etc</p>
-          <p>frameworks: django, wordpress, etc</p>
-          <p>tools: pgadmin, git etc</p>
-          <p>IDE: pycharm, phpstorm etc</p>
-          <p>operating systems: linux, windows</p>
+          <div class="divide-y-2 divide-gray-500 space-y-5">
+            <div class="about-section mb-2">
+              <p class="text-xl pb-1 font-bold tracking-wide font-sans">About me</p>
+              <p><span class="font-semibold">Technologies:</span> {% for technology in about.technologies %}{{ technology }}{% endfor %}</p>
+              <p><span class="font-semibold">Frameworks:</span> {% for framework in about.frameworks %}{{ framework }}{% endfor %}</p>
+              <p><span class="font-semibold">Tools:</span> {% for tool in about.tools %}{{ tool }}{% endfor %}</p>
+              <p><span class="font-semibold">IDEs:</span> {% for ide in about.ides %}{{ ide }}{% endfor %}</p>
+              <p><span class="font-semibold">Operating systems:</span> {% for operating_system in about.operating_systems %}{{ operating_system }}{% endfor %}</p>
+            </div>
+            <div class="exp-section pt-4">
+              <p class="text-xl pb-1 font-bold tracking-wide font-sans">Experience</p>
+              <p><span class="font-semibold">Total experience:</span> {{ about.total_exp_years }}</p>
+              <p><span class="font-semibold">Current employer:</span> <a {% if about.current_employer_website %}href="{{ about.current_employer_website }}"{% endif %}>{{ about.current_employer }}</a></p>
+            </div>
+          </div>
         </div>
+
         <div class="latest-projects box">
           <h2>latest projects</h2>
           <div>
