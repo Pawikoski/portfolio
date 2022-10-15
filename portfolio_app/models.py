@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Technology(models.Model):
@@ -81,10 +82,30 @@ class About(models.Model):
 class Social(models.Model):
     name = models.CharField(verbose_name="Name", max_length=45)
     url = models.URLField(verbose_name="URL", max_length=200)
-    icon = models.CharField(verbose_name="FontAwesome icon (html i tag)", max_length=80)
+    icon = models.CharField(verbose_name="FontAwesome icon (html <i> tag)", max_length=80)
 
 
 class Contact(models.Model):
     mail = models.EmailField(verbose_name="E-mail")
-    telegram = models.CharField(verbose_name="Telegram - Phone number (with +area code) or username")
-    skype = models.CharField(verbose_name="Skype - Username")
+    telegram = models.CharField(verbose_name="Telegram - Phone number (with +area code) or username", max_length=50)
+    skype = models.CharField(verbose_name="Skype - Username", max_length=50)
+
+
+class LatestProject(models.Model):
+    name = models.CharField(max_length=100)
+    short_description = models.TextField(max_length=300)
+    project_url = models.URLField(null=True, blank=True)
+    technologies = models.ManyToManyField(Technology)
+    frameworks = models.ManyToManyField(Framework)
+    tools = models.ManyToManyField(Tool)
+    operating_systems = models.ManyToManyField(OperatingSystem)
+
+
+
+class Language(models.Model):
+    name = models.CharField(verbose_name="Language", max_length=35)
+    level = models.PositiveSmallIntegerField(verbose_name="Level of knowledge (1-6)", default=1, validators=[MinValueValidator(1), MaxValueValidator(6)])
+
+
+class CurrentlyStudying(models.Model):
+    name = models.CharField(verbose_name="Technology you are currently studying", max_length=60)
