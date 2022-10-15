@@ -93,6 +93,7 @@ class Contact(models.Model):
 
 class LatestProject(models.Model):
     name = models.CharField(max_length=100)
+    category = models.CharField(max_length=70)
     short_description = models.TextField(max_length=300)
     project_url = models.URLField(null=True, blank=True)
     technologies = models.ManyToManyField(Technology)
