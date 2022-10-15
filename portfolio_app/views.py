@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import About, LatestProject, Social
+from .models import About, CurrentlyStudying, LatestProject, Social, Language, Education
 
 
 # Create your views here.
@@ -17,15 +17,15 @@ def index(request):
             "current_employer": about_info.current_employer,
             "current_employer_website": about_info.current_employer_website
         }
-    socials = Social.objects.all()
-    latest_projects = LatestProject.objects.all()
+    languages = [{"name": lang.name, "full_stars": range(lang.level), "blank_stars": range(6 - lang.level)} for lang in Language.objects.all()]
 
-    
-    
     context = {
         "about": about,
-        "socials": socials,
-        "latest_projects": latest_projects,
+        "socials": Social.objects.all(),
+        "latest_projects": LatestProject.objects.all()[:3],
+        "languages": languages,
+        "currently_studying": CurrentlyStudying.objects.all(),
+        "education": Education.objects.all(),
     }
 
     return render(request, "index.html", context=context)
