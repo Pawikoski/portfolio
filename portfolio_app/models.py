@@ -82,3 +82,9 @@ class Social(models.Model):
     name = models.CharField(verbose_name="Name", max_length=45)
     url = models.URLField(verbose_name="URL", max_length=200)
     icon = models.CharField(verbose_name="FontAwesome icon (html i tag)", max_length=80)
+
+
+class Contact(models.Model):
+    mail = models.EmailField(verbose_name="E-mail")
+    telegram = models.CharField(verbose_name="Telegram - Phone number (with +area code) or username")
+    skype = models.CharField(verbose_name="Skype - Username")
