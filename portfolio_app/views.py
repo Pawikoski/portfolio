@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import About
+from .models import About, Social
 
 
 # Create your views here.
@@ -15,10 +15,12 @@ def index(request):
         "current_employer": about_info.current_employer,
         "current_employer_website": about_info.current_employer_website
     }
+    socials = Social.objects.all()
     
     
     context = {
         "about": about,
+        "socials": socials,
     }
 
     return render(request, "index.html", context=context)

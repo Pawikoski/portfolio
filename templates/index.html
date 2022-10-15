@@ -2,13 +2,14 @@
 
 {% block content %}
       <!-- Navbar -->
-      <nav class="navbar px-7 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
+      <nav class="navbar px-16 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
         <div class="personal flex flex-col ml-5 space-y-2">
           <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
           <span>Junior Fullstack Developer</span>
           <div class="flex flex-row links space-x-3">
-            <span class="item github rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50"><i class="fa-brands fa-github"></i></span>
-            <span class="item github rounded-full bg-">linkedin icon</span>
+            {% for social in socials %}
+            <a title="{{ social.name }}" target="_blank" href="{{ social.url }}" class="item rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50">{{ social.icon|safe }}</a>
+            {% endfor %}
           </div>
         </div>
         <div class="contact">
