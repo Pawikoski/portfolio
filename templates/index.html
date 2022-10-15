@@ -50,10 +50,11 @@
           <p>technology stack: langs, frameworks</p>
         </div>
       {% endfor %}
+      <a href="" class="text-blue-400">See more...</a>
 
     </div>
     <div class="other-projects box">
-      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Other projects</p>
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal projects</p>
       <div class="side-project">
         <a href="#">project name</a>
         <p>short description</p>
@@ -92,18 +93,31 @@
     </div>
     <div class="education box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Education</p>
-      <p>degree</p>
-      <p>school name (yyyy-yyyy)</p>
+      {% for obj in education %}
+      <div class="py-1">
+        <p class="text-lg font-semibold">{{ obj.degree }}</p>
+        <p class="text-blue-400 font-semibold"><a href="{{ obj.website }}">{{ obj.name }}</a></p>
+        <p>{{ obj.start_date|date:"Y" }} - {% if obj.still_learning %}now{% else %}{{ obj.graduate_date|date:"Y" }}{% endif %}</p>
+      </div>
+      {% endfor %}
+
+
     </div>
     <div class="languages box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Languages</p>
-      <p>language: level [stars]</p>
+      {% for language in languages %}
+        <div class="flex justify-between space-y-3 items-baseline">
+          <p>{{ language.name }}</p>
+          <p class=" text-yellow-300">{% for _ in language.full_stars %}<i class="fa-solid fa-star"></i>{% endfor %}{% for _ in language.blank_stars %}<i class="fa-regular fa-star"></i>{% endfor %}</p>
+        </div>
+      {% endfor %}
     </div>
     <div class="currently-learn box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Currently studying</p>
-      <ul>
-        <li>react</li>
-        <li>tailwind</li>
+      <ul class="list-disc pl-4">
+        {% for item in currently_studying %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </div>
 
