@@ -17,9 +17,9 @@
   </div>
 </nav>
 
-<div class="container md flex flex-row mx-auto justify-between space-x-7 my-5">
+<div class="container md flex lg:flex-row mx-auto justify-between lg:space-x-7 lg:my-5 sm:flex-col sm:space-x-0 sm:my-1">
   <!-- Main -->
-  <div class="main-section flex flex-col w-3/4 overflow-hidden">
+  <div class="main-section flex flex-col lg:w-3/4 overflow-hidden sm:w-full">
     <div class="about box">
       <div class="divide-y-2 divide-gray-500 space-y-5">
         <div class="about-section mb-2">
@@ -73,23 +73,27 @@
   </div>
 
   <!-- Sidebar -->
-  <div class="sidebar w-1/4">
+  <div class="sidebar lg:w-1/4 sm:w-full">
     <div class="info box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal info</p>
-      <p>adres</p>
-      <p>email</p>
+      <p class="font-semibold">{{ personal_data.location }}</p>
+      <p class="text-blue-400"><a href="mailto:{{ personal_data.email }}">{{ personal_data.email }}</a></p>
+      <p class="text-blue-400"><a href="{{ personal_data.cv }}">Download CV</a></p>
+      <p class="text-blue-400"><a href="{{ personal_data.contact_form }}">Contact form</a></p>
     </div>
     <div class="skills box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Skills</p>
-      <div class="skill">
+      {% for skill in skills %}
+      <div class="skill my-3">
         <div class="flex flex-row justify-between">
-          <span>language</span>
+          <span>{{ skill.language }}</span>
           <span>level</span>
         </div>
         <div class="progress-bar bg-slate-700 w-full h-3">
-          <div class="progress-green w-9/12 bg-green-500 h-full"></div>
+          <div class="progress-green w-{{ skill.level }}/12 bg-green-500 h-full"></div>
         </div>
       </div>
+      {% endfor %}
     </div>
     <div class="education box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Education</p>
@@ -116,7 +120,7 @@
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Currently studying</p>
       <ul class="list-disc pl-4">
         {% for item in currently_studying %}
-        <li>{{ item }}</li>
+        <li>{{ item.name }}</li>
         {% endfor %}
       </ul>
     </div>
