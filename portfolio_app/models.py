@@ -76,3 +76,9 @@ class About(models.Model):
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
+
+
+class Social(models.Model):
+    name = models.CharField(verbose_name="Name", max_length=45)
+    url = models.URLField(verbose_name="URL", max_length=200)
+    icon = models.CharField(verbose_name="FontAwesome icon (html i tag)", max_length=80)
