@@ -102,7 +102,6 @@ class LatestProject(models.Model):
     operating_systems = models.ManyToManyField(OperatingSystem)
 
 
-
 class Language(models.Model):
     name = models.CharField(verbose_name="Language", max_length=35)
     level = models.PositiveSmallIntegerField(verbose_name="Level of knowledge (1-6)", default=1, validators=[MinValueValidator(1), MaxValueValidator(6)])
@@ -110,3 +109,12 @@ class Language(models.Model):
 
 class CurrentlyStudying(models.Model):
     name = models.CharField(verbose_name="Technology you are currently studying", max_length=60)
+
+
+class Education(models.Model):
+    name = models.CharField(max_length=80)
+    degree = models.CharField(max_length=80)
+    website = models.URLField(null=True, blank=True)
+    start_date = models.DateField()
+    graduate_date = models.DateField(null=True, blank=True)
+    still_learning = models.BooleanField(default=True)
