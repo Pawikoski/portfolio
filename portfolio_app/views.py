@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .models import About, CurrentlyStudying, LatestProject, Personal, Skill, Language, Education
 
 
@@ -28,7 +28,6 @@ def index(request):
         "personal_data": Personal.objects.first(),
         "skills": Skill.objects.all(),
     }
-    print(context)
 
     return render(request, "index.html", context=context)
 

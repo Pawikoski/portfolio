@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -135,3 +136,13 @@ class Personal(models.Model):
 class Skill(models.Model):
     language = models.CharField(max_length=35)
     level = models.PositiveSmallIntegerField(verbose_name="Skill level (1-12)", validators=[MinValueValidator(1), MaxValueValidator(12)])
+
+
+class Experience(models.Model):
+    title = models.CharField(max_length=40)
+    short_description = models.TextField(max_length=500)
+    company_name = models.CharField(max_length=80)
+    company_website = models.URLField(null=True, blank=True)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    still_working = models.BooleanField(default=False)
