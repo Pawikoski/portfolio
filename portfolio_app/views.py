@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import About, CurrentlyStudying, LatestProject, Personal, Skill, Social, Language, Education
-import random
+from .models import About, CurrentlyStudying, LatestProject, Personal, Skill, Language, Education
 
 
 # Create your views here.
@@ -22,7 +21,6 @@ def index(request):
     
     context = {
         "about": about,
-        "socials": Social.objects.all(),
         "latest_projects": LatestProject.objects.all()[:3],
         "languages": languages,
         "currently_studying": CurrentlyStudying.objects.all(),

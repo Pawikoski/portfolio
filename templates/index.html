@@ -1,22 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Navbar -->
-<nav class="navbar px-16 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
-  <div class="personal flex flex-col ml-5 space-y-2">
-    <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
-    <span>Junior Fullstack Developer</span>
-    <div class="flex flex-row links space-x-3">
-      {% for social in socials %}
-      <a title="{{ social.name }}" target="_blank" href="{{ social.url }}" class="item rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50">{{ social.icon|safe }}</a>
-      {% endfor %}
-    </div>
-  </div>
-  <div class="contact">
-    telegram
-  </div>
-</nav>
-
 <div class="container md flex lg:flex-row mx-auto justify-between lg:space-x-7 lg:my-5 sm:flex-col sm:space-x-0 sm:my-1">
   <!-- Main -->
   <div class="main-section flex flex-col lg:w-3/4 overflow-hidden sm:w-full">
@@ -60,6 +44,8 @@
         <p>short description</p>
         <p>technology stack: </p>
       </div>
+      
+      <a href="" class="text-blue-400">See more...</a>
     </div>
     <div class="experience box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>
