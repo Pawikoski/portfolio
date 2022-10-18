@@ -1,0 +1,7 @@
+{
+    "frameworks": ["Django", "Express.js", "Flask", "Laravel", "ASP.NET Core", "Spring", "Ruby on Rails", "Angular", "Ember", "Vue.js", "React.js"],
+    "ides": ["PyCharm", "WebStorm", "PhpStorm", "Visual Studio", "Visual Studio Code", "Eclipse", "Android Studio", "IntelliJ", "Atom", "Code::Blocks", "RubyMine"],
+    "technologies": ["Python", "JavaScript", "HTML", "CSS", "JavaScript", "Java", "SQL", "C#", "C++", "Rust", "Perl", "Go", "Kotlin", "R", "PHP", "C", "Swift"],
+    "tools": ["DbSchema", "PgAdmin 4", "DB Browser (SQLite)", "Putty", "RDP", "Chrome DevTools"],
+    "operating_systems": ["Windows", "Windows 10", "Windows 11", "Linux", "Ubuntu", "Fedora", "Red Hat", "Debian"]
+}
