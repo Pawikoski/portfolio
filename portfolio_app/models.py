@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Technology(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
 
     class Meta:
         verbose_name = "Technology"
@@ -15,7 +15,7 @@ class Technology(models.Model):
 
 
 class Framework(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
 
     class Meta:
         verbose_name = "Framework"
@@ -26,7 +26,7 @@ class Framework(models.Model):
 
 
 class Tool(models.Model):
-    name = models.CharField(max_length=65)
+    name = models.CharField(max_length=65, unique=True)
 
     class Meta:
         verbose_name = "Tool"
@@ -37,7 +37,7 @@ class Tool(models.Model):
 
 
 class Ide(models.Model):
-    name = models.CharField(max_length=65)
+    name = models.CharField(max_length=65, unique=True)
 
     class Meta:
         verbose_name = "IDE"
@@ -48,7 +48,7 @@ class Ide(models.Model):
 
 
 class OperatingSystem(models.Model):
-    name = models.CharField(max_length=65)
+    name = models.CharField(max_length=65, unique=True)
 
     class Meta:
         verbose_name = "Operating system"
@@ -95,7 +95,7 @@ class Contact(models.Model):
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
-        
+
 
 class LatestProject(models.Model):
     name = models.CharField(max_length=100)
