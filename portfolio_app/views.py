@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import About, CurrentlyStudying, Experience, LatestProject, Personal, PersonalProject, Skill, Language, Education, Credit
+from .models import About, Experience, LatestProject, PersonalProject
 
 
 # Create your views here.
@@ -17,17 +17,10 @@ def index(request):
             "current_employer": about_info.current_employer,
             "current_employer_website": about_info.current_employer_website
         }
-    languages = [{"name": lang.name, "full_stars": range(lang.level), "blank_stars": range(6 - lang.level)} for lang in Language.objects.all()]
-    
+
     context = {
         "about": about,
         "latest_projects": LatestProject.objects.all()[:3],
-        "languages": languages,
-        "currently_studying": CurrentlyStudying.objects.all(),
-        "education": Education.objects.all(),
-        "personal_data": Personal.objects.first(),
-        "skills": Skill.objects.all(),
-        "credits": Credit.objects.all(),
         "work_experience": Experience.objects.all(),
         "personal_projects": PersonalProject.objects.all()
     }
