@@ -85,17 +85,17 @@ class Social(models.Model):
     url = models.URLField(verbose_name="URL", max_length=200)
     icon = models.CharField(verbose_name="FontAwesome icon (html <i> tag)", max_length=80)
 
-    def save(self, *args, **kwargs):
-        if self.__class__.objects.count():
-            self.pk = self.__class__.objects.first().pk
-        super().save(*args, **kwargs)
-
 
 class Contact(models.Model):
     mail = models.EmailField(verbose_name="E-mail")
     telegram = models.CharField(verbose_name="Telegram - Phone number (with +area code) or username", max_length=50, null=True)
     skype = models.CharField(verbose_name="Skype - Username", max_length=50, blank=True)
 
+    def save(self, *args, **kwargs):
+        if self.__class__.objects.count():
+            self.pk = self.__class__.objects.first().pk
+        super().save(*args, **kwargs)
+        
 
 class LatestProject(models.Model):
     name = models.CharField(max_length=100)
