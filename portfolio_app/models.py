@@ -146,3 +146,8 @@ class Experience(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     still_working = models.BooleanField(default=False)
+
+
+class Credit(models.Model):
+    name = models.CharField(max_length=65)
+    url = models.URLField(null=True, blank=True)
