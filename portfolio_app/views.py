@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import About, CurrentlyStudying, LatestProject, Personal, Skill, Language, Education, Credit
+from .models import About, CurrentlyStudying, Experience, LatestProject, Personal, PersonalProject, Skill, Language, Education, Credit
 
 
 # Create your views here.
@@ -28,6 +28,8 @@ def index(request):
         "personal_data": Personal.objects.first(),
         "skills": Skill.objects.all(),
         "credits": Credit.objects.all(),
+        "work_experience": Experience.objects.all(),
+        "personal_projects": PersonalProject.objects.all()
     }
 
     return render(request, "index.html", context=context)

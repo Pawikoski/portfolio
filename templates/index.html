@@ -31,7 +31,7 @@
           {% if project.project_url %}
           <iframe src="{{ project.project_url }}" frameborder="0" seamless></iframe>
           {% endif %}
-          <p>technology stack: langs, frameworks</p>
+          <p>technology stack: langs, frameworks TODO:</p>
         </div>
       {% endfor %}
       <a href="" class="text-blue-400">See more...</a>
@@ -39,21 +39,25 @@
     </div>
     <div class="other-projects box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal projects</p>
+      {% for project in personal_projects %}
       <div class="side-project">
-        <a href="#">project name</a>
-        <p>short description</p>
-        <p>technology stack: </p>
+        <a href="#">{{ project.name }}</a>
+        {{ project.category }}
+        <p>{{ project.short_description }}</p>
+        <p>technology stack: TODO:</p>
       </div>
-      
+      {% endfor %}
       <a href="" class="text-blue-400">See more...</a>
     </div>
     <div class="experience box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>
+      {% for exp in work_experience %}
       <div class="experience-position">
-        <p>fullstack developer - company name (start_year - now)</p>
-        <p>short desc what am i doing</p>
-        <p>enviroment/stack:</p>
+        <p>{{ exp.title }} - {{ exp.company_name }} ({{ exp.start_date|date:"Y" }} - now)</p>
+        <p>{{ exp.short_description }}</p>
+        <p>enviroment/stack: TODO:</p>
       </div>
+      {% endfor %}
     </div>
 
   </div>
