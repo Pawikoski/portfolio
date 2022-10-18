@@ -151,3 +151,14 @@ class Experience(models.Model):
 class Credit(models.Model):
     name = models.CharField(max_length=65)
     url = models.URLField(null=True, blank=True)
+
+
+class PersonalProject(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=70)
+    short_description = models.TextField(max_length=300)
+    project_url = models.URLField(null=True, blank=True)
+    technologies = models.ManyToManyField(Technology)
+    frameworks = models.ManyToManyField(Framework)
+    tools = models.ManyToManyField(Tool)
+    operating_systems = models.ManyToManyField(OperatingSystem)
