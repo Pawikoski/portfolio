@@ -32,4 +32,4 @@ RUN chmod +x  $APP_HOME/entrypoint.sh
 
 COPY . $APP_HOME
 
-ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
+ENTRYPOINT [ "/home/app/web/entrypoint.sh" ]
