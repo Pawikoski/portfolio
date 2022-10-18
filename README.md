@@ -93,10 +93,12 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Python][Python]][https://python.org/]
-* [![Django][Django]][https://www.djangoproject.com/]
-* [![Tailwind][Tailwind CSS]][https://tailwindcss.com/]
-* [![Docker][Docker]][https://www.docker.com/]
+[Tailwind-url
+[Docker-url]:
+* [![Python][Python]][Python-url]
+* [![Django][Django]][Django-url]
+* [![Tailwind][Tailwind CSS]][Tailwind-url]
+* [![Docker][Docker]][Docker-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -241,3 +243,8 @@ Project Link: [https://github.com/Pawikoski/portfolio](https://github.com/Pawiko
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+
+[Python-url]: https://python.org/
+[Django-url]: https://www.djangoproject.com/
+[Tailwind-url]: https://tailwindcss.com/
+[Docker-url]: https://www.docker.com/
