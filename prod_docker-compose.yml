@@ -25,8 +25,8 @@ services:
       - 5433
   nginx:
     build: ./nginx
-    ports:
-      - 80:80
+    expose:
+      - 80
     volumes:
       - static_volume:/home/app/web/staticfiles
     depends_on:
