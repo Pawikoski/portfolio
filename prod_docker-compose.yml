@@ -31,6 +31,8 @@ services:
       - 80
     volumes:
       - static_volume:/home/app/web/staticfiles
+    environment:
+      - VIRTUAL_HOST=pawel-stawikowski.pl,www.pawel-stawikowski.pl
     depends_on:
       - web
 
