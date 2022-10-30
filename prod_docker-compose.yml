@@ -23,8 +23,6 @@ services:
       - ./.db.env
     expose:
       - 5433
-    command:
-      - '-p 5433'
   nginx:
     build: ./nginx
     expose:
