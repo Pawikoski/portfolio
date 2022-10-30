@@ -1,7 +1,8 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="pl">
   <head>
-    <title>Paweł Stawikowski - portfolio</title>
+    <title>{{ personal_data.full_name }} - portfolio</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,9 +11,22 @@
     <div class="main">
       <!-- Header -->
       <nav class="navbar px-16 py-2 bg-neutral-800 h-60 flex flex-row items-center justify-between">
+
+        <div class="absolute right-0 top-0 pr-3 pt-2">
+          <form action="{% url 'select_language' %}" method="post">
+            {% csrf_token %}
+            <div class="flex flex-row justify-end space-x-3">
+
+                {% for lang in site_languages %}
+                  <button name="lang" value="{{ lang.code }}"><img src="{% static lang.url %}" width="20px" /></button>
+                {% endfor %}
+            </div>
+          </form>
+        </div>
+
         <div class="personal flex flex-col ml-5 space-y-2">
-          <h1 class="text-4xl font-bold">Paweł Stawikowski</h1>
-          <span>Junior Fullstack Developer</span>
+          <h1 class="text-4xl font-bold">{{ personal_data.full_name }}</h1>
+          <span>{{ personal_data.level_and_proffesion }}</span>
           <div class="flex flex-row links space-x-3">
             {% for social in socials %}
             <a title="{{ social.name }}" target="_blank" href="{{ social.url }}" class="item rounded-full bg-gray-500 p-2 text-xl hover:bg-gray-400 text-gray-100 hover:text-gray-50">{{ social.icon|safe }}</a>
@@ -26,13 +40,13 @@
         </div>
       </nav>
       
-      <div class="container md flex lg:flex-row mx-auto justify-between lg:space-x-7 lg:my-5 sm:flex-col sm:space-x-0 sm:my-1">
+      <div class="container md flex flex-col space-x-0 my-1 lg:flex-row mx-auto justify-between lg:space-x-7 lg:my-5">
         
       <!-- Main -->
       {% block content %}{% endblock %}
 
       <!-- Sidebar -->
-      <div class="sidebar lg:w-1/4 sm:w-full">
+      <div class="sidebar w-full lg:w-1/4 ">
         <div class="info box">
           <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal info</p>
           <p class="font-semibold">{{ personal_data.location }}</p>

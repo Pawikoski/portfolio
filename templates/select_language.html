@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wybierz język</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: rgba(26,18,25,0.81);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex justify-center items-center h-screen flex-col">
+        <p class="block mb-2 text-3xl font-medium text-gray-900 dark:text-gray-400">Select language</p>
+
+        <form action="{% url 'select_language' %}" method="post">
+        {% csrf_token %}
+        <div class="container mx-auto p-6">
+            <div class="flex items-center text-white flex-wrap justify-center">
+                {% for language in languages %}
+                <button name="lang" value="{{ language.code }}" class="flex p-4 text-center">
+                    <div class="flex bg-gray-700 overflow-hidden border-2 border-red-400 hover:border-white h-full rounded-lg p-4 items-center jusitfy-center flex-col hover:cursor-pointer">
+                        <img src="{% static 'svg_flags/'|add:language.code|add:'.svg' %}" alt="{{ language.language }}" width="30%" />
+                        <h2 class="mt-2 mb-2 font-bold text-4xl font-Headingg">
+                          {{ language.language|title }}
+                        </h2>
+                    </div>
+                  </button>
+                {% endfor %}
+            </div>
+          </div>
+        </form>
+
+    </div>
+
+</body>
+</html>

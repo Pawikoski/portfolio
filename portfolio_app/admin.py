@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Technology, Tool, Ide, Framework, About, OperatingSystem, Social, Contact, LatestProject, Language, CurrentlyStudying, Education, Personal, Credit, Experience, PersonalProject
+from .models import SiteLanguage, Skill, Technology, Tool, Ide, Framework, About, OperatingSystem, Social, Contact, Project, Language, CurrentlyStudying, Education, Personal, Credit, Experience
 
 # Register your models here.
 admin.site.register(Technology)
@@ -12,7 +12,7 @@ admin.site.register(OperatingSystem)
 admin.site.register(Social)
 
 admin.site.register(Contact)
-admin.site.register(LatestProject)
+admin.site.register(Project)
 admin.site.register(Language)
 admin.site.register(CurrentlyStudying)
 admin.site.register(Education)
@@ -20,4 +20,4 @@ admin.site.register(Personal)
 admin.site.register(Skill)
 admin.site.register(Credit)
 admin.site.register(Experience)
-admin.site.register(PersonalProject)
+admin.site.register(SiteLanguage)

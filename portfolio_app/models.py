@@ -2,6 +2,12 @@ from email.policy import default
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
+class SiteLanguage(models.Model):
+    code = models.CharField(max_length=10)
+    language = models.CharField(max_length=40)
+
+
 # Create your models here.
 class Technology(models.Model):
     name = models.CharField(max_length=40, unique=True)
@@ -59,6 +65,7 @@ class OperatingSystem(models.Model):
 
 # TODO: custom manage.py command to add base values to models above
 
+
 class About(models.Model):
     technologies = models.ManyToManyField(Technology)
     frameworks = models.ManyToManyField(Framework)
@@ -97,7 +104,9 @@ class Contact(models.Model):
         super().save(*args, **kwargs)
 
 
-class LatestProject(models.Model):
+class Project(models.Model):
+    language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
+    personal_project = models.BooleanField(default=False)
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=70)
     short_description = models.TextField(max_length=300)
@@ -118,6 +127,7 @@ class CurrentlyStudying(models.Model):
 
 
 class Education(models.Model):
+    language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
     degree = models.CharField(max_length=80)
     website = models.URLField(null=True, blank=True)
@@ -127,6 +137,9 @@ class Education(models.Model):
 
 
 class Personal(models.Model):
+    full_name = models.CharField(max_length=150)
+    level_and_proffesion = models.CharField(verbose_name="e.g. Junior Backend Developer", max_length=150)
+    language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
     location = models.CharField(max_length=100)
     email = models.EmailField(max_length=70)
     cv = models.FileField(upload_to="cv")
@@ -134,11 +147,12 @@ class Personal(models.Model):
 
 
 class Skill(models.Model):
-    language = models.CharField(max_length=35)
+    technology = models.CharField(max_length=35)
     level = models.PositiveSmallIntegerField(verbose_name="Skill level (1-12)", validators=[MinValueValidator(1), MaxValueValidator(12)])
 
 
 class Experience(models.Model):
+    language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
     title = models.CharField(max_length=40)
     short_description = models.TextField(max_length=500)
     company_name = models.CharField(max_length=80)
@@ -151,14 +165,3 @@ class Experience(models.Model):
 class Credit(models.Model):
     name = models.CharField(max_length=65)
     url = models.URLField(null=True, blank=True)
-
-
-class PersonalProject(models.Model):
-    name = models.CharField(max_length=100)
-    category = models.CharField(max_length=70)
-    short_description = models.TextField(max_length=300)
-    project_url = models.URLField(null=True, blank=True)
-    technologies = models.ManyToManyField(Technology)
-    frameworks = models.ManyToManyField(Framework)
-    tools = models.ManyToManyField(Tool)
-    operating_systems = models.ManyToManyField(OperatingSystem)

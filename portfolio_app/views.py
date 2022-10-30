@@ -1,9 +1,20 @@
-from django.shortcuts import render
-from .models import About, Experience, LatestProject, PersonalProject
+from django.shortcuts import render, redirect
+from .models import About, Experience, Language, Project, SiteLanguage
 
 
 # Create your views here.
 def index(request):
+    language_code = request.session.get("language")
+    print(language_code)
+    if not language_code:
+        return redirect('select_language')
+    
+    try:
+        language = SiteLanguage.objects.get(code=language_code)
+    except SiteLanguage.DoesNotExist:
+        language = SiteLanguage.objects.first()
+
+
     about_info = About.objects.first()
     about = None
     if about_info:
@@ -20,10 +31,21 @@ def index(request):
 
     context = {
         "about": about,
-        "latest_projects": LatestProject.objects.all()[:3],
+        "latest_projects": Project.objects.filter(personal_project=False, language=language)[:3],
         "work_experience": Experience.objects.all(),
-        "personal_projects": PersonalProject.objects.all()
+        "personal_projects": Project.objects.filter(personal_project=True, language=language)
     }
 
     return render(request, "index.html", context=context)
+
+
+def select_language(request):
+    if request.method == "POST":
+        lang_country_code = (request.POST.get("lang"))
+        request.session['language'] = lang_country_code
+        return redirect("homepage")
+    
+    languages = SiteLanguage.objects.all()
+
+    return render(request, "select_language.html", context={"languages": languages})
 
