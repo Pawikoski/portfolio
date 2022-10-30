@@ -92,6 +92,7 @@
 * [![Django][Django]][Django-url]
 * [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 * [![Docker][Docker]][Docker-url]
+https://flagicons.lipis.dev/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
