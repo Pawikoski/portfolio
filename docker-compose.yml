@@ -18,6 +18,10 @@ services:
       - postgres_data:/var/lib/postgresql/postgres_data
     env_file:
       - ./.db.env
+    expose:
+      - "5433"
+    command:
+      - "-p 5433"
 
 volumes:
   postgres_data:
