@@ -21,8 +21,6 @@ services:
       - postgres_data:/var/lib/postgresql/postgres_data
     env_file:
       - ./.db.env
-    expose:
-      - 5433
   nginx:
     build: ./nginx
     expose:
