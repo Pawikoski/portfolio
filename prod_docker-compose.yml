@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  portfolio-web:
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -11,31 +11,32 @@ services:
     env_file:
       - ./prod.env
     volumes:
-      - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/mediafiles
+      - portfolio_static_volume:/home/app/web/staticfiles
+      - portfolio_media_volume:/home/app/web/mediafiles
     depends_on:
-      - db
-  db:
+      - portfolio-db
+  portfolio-db:
     image: postgres:15.0-alpine
     volumes:
-      - postgres_data:/var/lib/postgresql/postgres_data
+      - portfolio_postgres_data:/var/lib/postgresql/postgres_data
     env_file:
       - ./.db.env
-  nginx:
+  portfolio-nginx:
     build: ./nginx
     expose:
       - 80
     volumes:
-      - static_volume:/home/app/web/staticfiles
+      - portfolio_static_volume:/home/app/web/staticfiles
+      - portfolio_media_volume:/home/app/web/mediafiles
     environment:
       - VIRTUAL_HOST=pawel-stawikowski.pl,www.pawel-stawikowski.pl
     depends_on:
-      - web
+      - portfolio-web
 
 volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
+  portfolio_postgres_data:
+  portfolio_static_volume:
+  portfolio_media_volume:
 
 
 networks:
