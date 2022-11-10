@@ -7,6 +7,9 @@ class SiteLanguage(models.Model):
     code = models.CharField(max_length=10)
     language = models.CharField(max_length=40)
 
+    def __str__(self):
+        return self.language
+
 
 # Create your models here.
 class Technology(models.Model):
