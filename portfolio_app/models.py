@@ -165,3 +165,37 @@ class Experience(models.Model):
 class Credit(models.Model):
     name = models.CharField(max_length=65)
     url = models.URLField(null=True, blank=True)
+
+
+class Translation(models.Model):
+    language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
+
+    about_me = models.CharField(max_length=50, default="About me")
+    technologies = models.CharField(max_length=50, default="Technologies")
+    frameworks = models.CharField(max_length=50, default="Frameworks")
+    tools = models.CharField(max_length=50, default="Tools")
+    ides = models.CharField(max_length=50, default="IDEs")
+    operating_systems = models.CharField(max_length=50, default="Operating systems")
+
+    experience = models.CharField(max_length=50, default="Experience")
+    total_experience = models.CharField(max_length=50, default="Total experience")
+    current_employer = models.CharField(max_length=50, default="Current employer")
+    years = models.CharField(max_length=50, default="years")
+
+    latest_projects = models.CharField(max_length=50, default="Latest projects")
+    personal_projects = models.CharField(max_length=50, default="Personal projects")
+
+    see_more = models.CharField(max_length=50, default="See more")
+
+    work_experience = models.CharField(max_length=50, default="Work experience")
+
+    personal_info = models.CharField(max_length=50, default="Personal info")
+    download_cv = models.CharField(max_length=50, default="Download CV")
+    contact_form = models.CharField(max_length=50, default="Contact form")
+
+    skills = models.CharField(max_length=50, default="Skills")
+    education = models.CharField(max_length=50, default="Educations")
+    currently_studying = models.CharField(max_length=50, default="Currently studying")
+    credits = models.CharField(max_length=50, default="Credits")
+
+    select_language = models.CharField(max_length=50, default="Select language")
