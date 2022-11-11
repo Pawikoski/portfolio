@@ -1,0 +1,32 @@
+name: Portfolio Deployment
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deployment:
+    name: deploy on pawel-stawikowski.pl
+    runs-on: ubuntu-latest
+    environment: production
+  
+    steps:
+      - name: "Wait for SSH"
+        run: |
+          while ! nc -w5 -z ${{ secrets.INSTANCE_IP }} 22; do
+            sleep 5
+            echo "SSH not available..."
+          done; echo "SSH ready"
+      - name: "Deployment"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.INSTANCE_IP }}
+          username: opc
+          key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+          script: |
+            cd portfolio && sudo git pull origin master
+            sudo chmod +x entrypoint.sh
+            sudo docker compose -f prod_docker-compose.yml up --build -d

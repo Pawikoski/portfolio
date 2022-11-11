@@ -1,11 +1,19 @@
-from .models import SiteLanguage, Social, Contact, CurrentlyStudying, Education, Personal, Skill, Credit, Language
+from .models import SiteLanguage, Social, Contact, CurrentlyStudying, Education, Personal, Skill,Credit, Language,\
+    Translation
 
 def base_processor(request):
     try:
         site_language = SiteLanguage.objects.get(code=request.session.get("language"))
     except SiteLanguage.DoesNotExist:
         site_language = SiteLanguage.objects.first()
-        
+
+    translations = None
+    if site_language:
+        try:
+            translations = Translation.objects.get(language=site_language)
+        except Translation.DoesNotExist:
+            pass
+
     return {
         "socials": Social.objects.all(),
         "contact": Contact.objects.first(),
@@ -15,5 +23,6 @@ def base_processor(request):
         "personal_data": Personal.objects.filter(language=site_language).first(),
         "skills": Skill.objects.all(),
         "credits": Credit.objects.all(),
-        "site_languages": [{"url": f"svg_flags/{lang.code}.svg", "code": lang.code} for lang in SiteLanguage.objects.all()]
+        "site_languages": [{"url": f"svg_flags/{lang.code}.svg", "code": lang.code} for lang in SiteLanguage.objects.all()],
+        "translations": translations
     }

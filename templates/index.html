@@ -5,23 +5,23 @@
     <div class="about box">
       <div class="divide-y-2 divide-gray-500 space-y-5">
         <div class="about-section mb-2">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">About me</p>
-          <p><span class="font-semibold">Technologies:</span> {% for technology in about.technologies %}{{ technology }}{% endfor %}</p>
-          <p><span class="font-semibold">Frameworks:</span> {% for framework in about.frameworks %}{{ framework }}{% endfor %}</p>
-          <p><span class="font-semibold">Tools:</span> {% for tool in about.tools %}{{ tool }}{% endfor %}</p>
-          <p><span class="font-semibold">IDEs:</span> {% for ide in about.ides %}{{ ide }}{% endfor %}</p>
-          <p><span class="font-semibold">Operating systems:</span> {% for operating_system in about.operating_systems %}{{ operating_system }}{% endfor %}</p>
+          <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.about_me }}</p>
+          <p><span class="font-semibold">{{ translations.technologies }}:</span> {% for technology in about.technologies %}{{ technology }}{% endfor %}</p>
+          <p><span class="font-semibold">{{ translations.frameworks }}:</span> {% for framework in about.frameworks %}{{ framework }}{% endfor %}</p>
+          <p><span class="font-semibold">{{ translations.tools }}:</span> {% for tool in about.tools %}{{ tool }}{% endfor %}</p>
+          <p><span class="font-semibold">{{ translations.ides }}:</span> {% for ide in about.ides %}{{ ide }}{% endfor %}</p>
+          <p><span class="font-semibold">{{ translations.operating_systems }}:</span> {% for operating_system in about.operating_systems %}{{ operating_system }}{% endfor %}</p>
         </div>
         <div class="exp-section pt-4">
-          <p class="text-xl pb-1 font-bold tracking-wide font-sans">Experience</p>
-          <p><span class="font-semibold">Total experience:</span> {{ about.total_exp_years }} {% if about.total_exp_years == 1 %}year{% else %}years{% endif %}</p>
-          <p><span class="font-semibold">Current employer:</span> <a {% if about.current_employer_website %}href="{{ about.current_employer_website }}"{% endif %}>{{ about.current_employer }}</a></p>
+          <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.experience }}</p>
+          <p><span class="font-semibold">{{ translations.total_experience }}:</span> {{ about.total_exp_years }} {% if about.total_exp_years == 1 %}{{ translations.year }}{% else %}{{ translations.years }}{% endif %}</p>
+          <p><span class="font-semibold">{{ translations.current_employer }}:</span> <a {% if about.current_employer_website %}href="{{ about.current_employer_website }}"{% endif %}>{{ about.current_employer }}</a></p>
         </div>
       </div>
     </div>
 
     <div class="latest-projects box">
-      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Latest projects</p>
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.latest_projects }}</p>
       {% for project in latest_projects %}
         <div>
           <span>{{ project.name }}</span>
@@ -32,11 +32,11 @@
           <p>technology stack: langs, frameworks TODO:</p>
         </div>
       {% endfor %}
-      <a href="" class="text-blue-400">See more...</a>
+      <a href="" class="text-blue-400">{{ translations.see_more }}...</a>
 
     </div>
     <div class="other-projects box">
-      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Personal projects</p>
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.personal_projects }}</p>
       {% for project in personal_projects %}
       <div class="side-project">
         <a href="#">{{ project.name }}</a>
@@ -45,7 +45,7 @@
         <p>technology stack: TODO:</p>
       </div>
       {% endfor %}
-      <a href="" class="text-blue-400">See more...</a>
+      <a href="" class="text-blue-400">{{ translations.see_more }}...</a>
     </div>
     <div class="experience box">
       <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>

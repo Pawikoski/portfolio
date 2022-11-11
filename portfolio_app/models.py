@@ -10,6 +10,11 @@ class SiteLanguage(models.Model):
     def __str__(self):
         return self.language
 
+    def save(self, *args, **kwargs):
+        if self.__class__.objects.filter(code=self.code).count():
+            self.pk = self.__class__.objects.get(code=self.code).pk
+        super().save(*args, **kwargs)
+
 
 # Create your models here.
 class Technology(models.Model):
@@ -145,7 +150,7 @@ class Personal(models.Model):
     language = models.ForeignKey(SiteLanguage, on_delete=models.CASCADE)
     location = models.CharField(max_length=100)
     email = models.EmailField(max_length=70)
-    cv = models.FileField(upload_to="cv")
+    cv = models.FileField(upload_to="cv", null=True, blank=True)
     contact_form = models.URLField(null=True, blank=True)
 
 
@@ -183,6 +188,7 @@ class Translation(models.Model):
     experience = models.CharField(max_length=50, default="Experience")
     total_experience = models.CharField(max_length=50, default="Total experience")
     current_employer = models.CharField(max_length=50, default="Current employer")
+    year = models.CharField(max_length=30, default="year")
     years = models.CharField(max_length=50, default="years")
 
     latest_projects = models.CharField(max_length=50, default="Latest projects")
@@ -201,4 +207,5 @@ class Translation(models.Model):
     currently_studying = models.CharField(max_length=50, default="Currently studying")
     credits = models.CharField(max_length=50, default="Credits")
 
+    languages = models.CharField(max_length=50, default="Languages")
     select_language = models.CharField(max_length=50, default="Select language")

@@ -5,7 +5,6 @@ from .models import About, Experience, Language, Project, SiteLanguage
 # Create your views here.
 def index(request):
     language_code = request.session.get("language")
-    print(language_code)
     if not language_code:
         return redirect('select_language')
     
