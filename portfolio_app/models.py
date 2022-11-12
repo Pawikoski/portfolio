@@ -126,7 +126,7 @@ class Project(models.Model):
     personal_project = models.BooleanField(default=False)
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=70)
-    short_description = models.TextField()
+    description = models.TextField()
     project_url = models.URLField(null=True, blank=True)
     technologies = models.ManyToManyField(Technology)
     frameworks = models.ManyToManyField(Framework)
