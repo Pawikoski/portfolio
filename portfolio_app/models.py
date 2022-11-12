@@ -94,11 +94,17 @@ class About(models.Model):
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return "About"
+
 
 class Social(models.Model):
     name = models.CharField(verbose_name="Name", max_length=45)
     url = models.URLField(verbose_name="URL", max_length=200)
     icon = models.CharField(verbose_name="FontAwesome icon (html <i> tag)", max_length=80)
+
+    def __str__(self):
+        return self.name
 
 
 class Contact(models.Model):
@@ -110,6 +116,9 @@ class Contact(models.Model):
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "Contact"
 
 
 class Project(models.Model):
@@ -124,14 +133,23 @@ class Project(models.Model):
     tools = models.ManyToManyField(Tool)
     operating_systems = models.ManyToManyField(OperatingSystem)
 
+    def __str__(self):
+        return self.name
+
 
 class Language(models.Model):
     name = models.CharField(verbose_name="Language", max_length=35)
     level = models.PositiveSmallIntegerField(verbose_name="Level of knowledge (1-6)", default=1, validators=[MinValueValidator(1), MaxValueValidator(6)])
 
+    def __str__(self):
+        return self.name
+
 
 class CurrentlyStudying(models.Model):
     name = models.CharField(verbose_name="Technology you are currently studying", max_length=60)
+
+    def __str__(self):
+        return self.name
 
 
 class Education(models.Model):
@@ -143,6 +161,9 @@ class Education(models.Model):
     graduate_date = models.DateField(null=True, blank=True)
     still_learning = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Personal(models.Model):
     full_name = models.CharField(max_length=150)
@@ -153,10 +174,21 @@ class Personal(models.Model):
     cv = models.FileField(upload_to="cv", null=True, blank=True)
     contact_form = models.URLField(null=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        if self.__class__.objects.count():
+            self.pk = self.__class__.objects.first().pk
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "Personal data"
+
 
 class Skill(models.Model):
     technology = models.CharField(max_length=35)
     level = models.PositiveSmallIntegerField(verbose_name="Skill level (1-12)", validators=[MinValueValidator(1), MaxValueValidator(12)])
+
+    def __str__(self):
+        return self.technology
 
 
 class Experience(models.Model):
@@ -169,10 +201,17 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     still_working = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.company_name
+
 
 class Credit(models.Model):
     name = models.CharField(max_length=65)
     url = models.URLField(null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+
 
 
 class Translation(models.Model):
@@ -209,3 +248,6 @@ class Translation(models.Model):
 
     languages = models.CharField(max_length=50, default="Languages")
     select_language = models.CharField(max_length=50, default="Select language")
+
+    def __str__(self):
+        return self.language
