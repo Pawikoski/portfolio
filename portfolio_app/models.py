@@ -175,8 +175,8 @@ class Personal(models.Model):
     contact_form = models.URLField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.__class__.objects.count():
-            self.pk = self.__class__.objects.first().pk
+        if self.__class__.objects.filter(language=self.language).count():
+            self.pk = self.__class__.objects.filter(language=self.language).first().pk
         super().save(*args, **kwargs)
 
     def __str__(self):
