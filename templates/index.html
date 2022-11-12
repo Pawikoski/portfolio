@@ -48,7 +48,7 @@
       <a href="" class="text-blue-400">{{ translations.see_more }}...</a>
     </div>
     <div class="experience box">
-      <p class="text-xl pb-1 font-bold tracking-wide font-sans">Work experience</p>
+      <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.work_experience }}</p>
       {% for exp in work_experience %}
       <div class="experience-position">
         <p>{{ exp.title }} - {{ exp.company_name }} ({{ exp.start_date|date:"Y" }} - now)</p>

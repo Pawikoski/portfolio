@@ -51,8 +51,8 @@
           <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.personal_info }}</p>
           <p class="font-semibold">{{ personal_data.location }}</p>
           <p class="text-blue-400"><a href="mailto:{{ personal_data.email }}">{{ personal_data.email }}</a></p>
-          <p class="text-blue-400"><a href="{{ personal_data.cv }}">Download CV</a></p>
-          <p class="text-blue-400"><a href="{{ personal_data.contact_form }}">Contact form</a></p>
+          <p class="text-blue-400"><a href="{{ personal_data.cv }}">{{ translations.download_cv }}</a></p>
+          <p class="text-blue-400"><a href="{{ personal_data.contact_form }}">{{ translations.contact_form }}</a></p>
         </div>
         <div class="skills box">
           <p class="text-xl pb-1 font-bold tracking-wide font-sans">{{ translations.skills }}</p>
